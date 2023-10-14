@@ -1,22 +1,30 @@
 import sys
 import windowClass as win
+import ThemeEngine
+import preferences as pref
+import images as img
 
 #-------------------------------------------------------------Program-----------------------------------------------------------------------------------------------
 
 #This is The Main Function Of The Program
 
 def main():
+    #Initialize The Theme Engine
+    ThemeEngine.Init()
+
     #Setting Up A QT Application
     app = win.QApplication(sys.argv)
 
-    print("Browser Started")
+    if pref.debug:
+        print("Browser Started")
+
 
     #Setting the name of the app
-    app.setApplicationName(win.pref.app_name)
+    app.setApplicationName(pref.app_name)
 
 
     #Setting The Default Icon Of App
-    app.setWindowIcon(win.QIcon(win.img.Browser_Icon_Path))
+    app.setWindowIcon(win.QIcon(img.Browser_Icon_Path))
 
     #Instantiaing an Object out of MainWindow Class
     window = win.MainWindow()
